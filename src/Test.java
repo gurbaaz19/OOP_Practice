@@ -39,5 +39,35 @@ public class Test {
         System.out.println(v1.moveForward(8));
         System.out.println(v1.moveBack(5));
 
+        OuterClass outer = new OuterClass();
+        OuterClass.InnerClass inner= outer.new InnerClass();
+
+        inner.innerPrintMethod();
+        outer.outerPrintMethod();
+        inner.interfaceMethod();
+
+        VehicleClass v3 = new VehicleClass(){
+            @Override
+            public int moveForward(int steps) {
+                return super.moveForward(steps*2);
+            }
+        };
+
+        System.out.println(v3.moveForward(2));
+        System.out.println(OuterClass.StaticInnerClass.z);
+
+        OuterClass.StaticInnerClass staticInner = new OuterClass.StaticInnerClass();
+        System.out.println(staticInner.a);
+
+        class LocalInnerClass {
+            public void bar(){
+                System.out.println("bar");
+            }
+        };
+
+        LocalInnerClass localInner= new LocalInnerClass();
+        localInner.bar();
+
+
     }
 }
