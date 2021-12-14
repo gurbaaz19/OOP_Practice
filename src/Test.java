@@ -1,3 +1,6 @@
+import landVehicles.*;
+import landVehicles.vehicles.*;
+
 public class Test {
 
     public static void main(String args[]) {
@@ -18,13 +21,23 @@ public class Test {
         z4.printNumber();
         z5.printNumber();
 
-        Rectangle rect= new Rectangle(5,4);
-        Square square=new Square(6);
+        Rectangle rect = new Rectangle(5, 4);
+        Square square = new Square(6);
 
         System.out.println("Rectangle Area= " + rect.getArea());
         System.out.println("Square Area= " + square.getArea());
 
         rect.printDetails();
         square.printDetails();
+
+        VehicleClass v1 = new Car();
+        VehicleClass v2= new Bicycle();
+
+        System.out.println(((Car) v1).calculateMaintenanceCost());
+        System.out.println(((Bicycle) v2).calculateMaintenanceCost());
+
+        System.out.println(v1.moveForward(8));
+        System.out.println(v1.moveBack(5));
+
     }
 }
