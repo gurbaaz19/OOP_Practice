@@ -31,7 +31,7 @@ public class Test {
         square.printDetails();
 
         VehicleClass v1 = new Car();
-        VehicleClass v2= new Bicycle();
+        VehicleClass v2 = new Bicycle();
 
         System.out.println(((Car) v1).calculateMaintenanceCost());
         System.out.println(((Bicycle) v2).calculateMaintenanceCost());
@@ -40,16 +40,16 @@ public class Test {
         System.out.println(v1.moveBack(5));
 
         OuterClass outer = new OuterClass();
-        OuterClass.InnerClass inner= outer.new InnerClass();
+        OuterClass.InnerClass inner = outer.new InnerClass();
 
         inner.innerPrintMethod();
         outer.outerPrintMethod();
         inner.interfaceMethod();
 
-        VehicleClass v3 = new VehicleClass(){
+        VehicleClass v3 = new VehicleClass() {
             @Override
             public int moveForward(int steps) {
-                return super.moveForward(steps*2);
+                return super.moveForward(steps * 2);
             }
         };
 
@@ -60,14 +60,34 @@ public class Test {
         System.out.println(staticInner.a);
 
         class LocalInnerClass {
-            public void bar(){
+            public void bar() {
                 System.out.println("bar");
             }
-        };
+        }
+        ;
 
-        LocalInnerClass localInner= new LocalInnerClass();
+        LocalInnerClass localInner = new LocalInnerClass();
         localInner.bar();
 
+        Float obj = new Float(8);
+        Class cls = obj.getClass();
 
+        System.out.println(cls);
+
+        Batch batch = new Batch();
+        Student student = null;
+        try{
+            findStudent(batch, student);
+        }catch(CustomException e){
+            System.out.println(e);
+        }
+
+    }
+
+    public static Student findStudent (Batch batch, Student student) throws CustomException{
+        try{return batch.getStudent(student);}
+        catch(NullPointerException e){
+            throw new CustomException("Student Not Found");
+        }
     }
 }
